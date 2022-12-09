@@ -12,12 +12,12 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-import com.tutorial.crud.security.jwt.JwtEntryPoint;
-import com.tutorial.crud.security.jwt.JwtTokenFilter;
-import com.tutorial.crud.security.service.UserDetailsServiceImpl;
+import com.itandapps.trackitweb.auth.app.security.jwt.JwtEntryPoint;
+import com.itandapps.trackitweb.auth.app.security.jwt.JwtTokenFilter;
+import com.itandapps.trackitweb.auth.app.security.service.UserDetailsServiceImpl;
+
 
 @Configuration
 @EnableWebSecurity
@@ -58,12 +58,13 @@ public class MainSecurity extends WebSecurityConfigurerAdapter {
 		return super.authenticationManager();
 	}
 
-	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+	@Override
+	protected void configure(HttpSecurity http) throws Exception {
 		http.cors().and().csrf().disable()
 				.authorizeRequests()
 				.antMatchers(
 						"/auth/**",
-						"/v2/api-docs/**",
+						"/v3/api-docs/**",
 						"/swagger-ui/**",
 						"/swagger-resources/**",
 						"/configuration/**"
