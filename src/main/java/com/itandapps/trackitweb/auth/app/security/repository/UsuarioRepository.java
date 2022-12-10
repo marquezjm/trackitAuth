@@ -8,9 +8,9 @@ import org.springframework.stereotype.Repository;
 import com.itandapps.trackitweb.auth.app.security.entity.Usuario;
 
 
-@Repository
-public interface UsuarioRepository extends JpaRepository<Usuario, Integer> {
-
+public interface UsuarioRepository  {
+	
+	
 	Optional<Usuario> findByNombreUsuario(String nombreUsuario);
 	boolean existsByNombreUsuario(String nombreUsuario);
 	boolean existsByEmail(String email);

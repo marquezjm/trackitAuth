@@ -13,6 +13,9 @@ import com.itandapps.trackitweb.auth.app.security.repository.UsuarioRepository;
 @Service
 @Transactional
 public class UsuarioService {
+	
+	
+	
 	@Autowired
 	UsuarioRepository usuarioRepository;
 	
@@ -28,7 +31,7 @@ public class UsuarioService {
 		return usuarioRepository.existsByEmail(email);
 	}
 	
-	public void save(Usuario usuario) {
+	/*public void save(Usuario usuario) {
 		usuarioRepository.save(usuario);
-	}
+	}*/
 }
